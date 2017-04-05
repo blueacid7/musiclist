@@ -1,0 +1,99 @@
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+  <div class="col-sm-12" style="text-align: center;
+  background-color: black;margin-top:10px;margin-bottom:10px;">
+    <h2 style="margin-top:10px">Music Track</h2>
+  </div>
+  <div class="col-sm-12" style="margin-bottom:10px;padding:0px"><input type="text" placeholder="Search Track"
+                                                                       ng-model="searchKey" ng-change="searchTrack()"
+                                                                       class="form-control" id="usr"></div>
+  <div ng-repeat="track in trackList">
+    <div class="list-row col-sm-12">
+      <div class="col-sm-8"><b>{{ track.title }}</b> [<span ng-repeat="genre in track.genres">{{genre.name}} | </span>]
+      </div>
+      <div class="col-sm-3" style="text-align: right">
+        <div class="star-ratings-sprite"><span style="width:{{track.rating*10}}%"
+                                               class="star-ratings-sprite-rating"></span></div>
+      </div>
+      <div class="col-sm-1" style="text-align: center">
+        <div class="glyphicon glyphicon-edit" style="cursor: pointer;color:#9f6206" data-toggle="modal"
+             data-target="#EditModal" ng-click="initiateEditing(track);"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-3"></div>
+<div class="col-sm-12">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6" style="padding-left:8px;padding-right:8px;">
+
+    <div class="col-sm-12" style="margin-top:10px;padding:0px;">
+      <div class="col-sm-2" style="padding:0px;text-align:left">
+        <button style="width:75px;height:40px" ng-click="getPrevPage()">Prev</button>
+      </div>
+      <div class="col-sm-8" style="padding:0px;text-align:center">
+        <button style="width:150px;height:40px" data-toggle="modal" data-target="#AddModal">Add Track</button>
+      </div>
+      <div class="col-sm-2" style="padding:0px;text-align:right">
+        <button style="width:75px;height:40px" ng-click="getNextPage()">Next</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+
+
+<!-- modal for adding track>
+
+<!-- Modal -->
+<div class="modal fade" id="AddModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:white">Add a track</h4>
+      </div>
+      <div class="modal-body col-sm-12">
+        <div class="col-sm-8">
+          <input type="text" ng-model="trackName" placeholder="Enter Track" class="form-control">
+        </div>
+        <div class="col-sm-4">
+          <input type="text" ng-model="trackRating" placeholder="Rating" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" ng-click="addTrack()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal for Editing track>
+
+<!-- Modal -->
+<div class="modal fade" id="EditModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:white">Edit track</h4>
+      </div>
+      <div class="modal-body col-sm-12">
+        <div class="col-sm-8">
+          <input type="text" ng-model="editableTrack.title" placeholder="Enter Track" class="form-control">
+        </div>
+        <div class="col-sm-4">
+          <input type="text" ng-model="editableTrack.rating" placeholder="Rating" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  data-dismiss="modal" ng-click="finishEditing()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

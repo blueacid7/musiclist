@@ -1,0 +1,58 @@
+body {
+    background-image: url("images/pass.jpg");
+    color: grey;
+    font-family: 'Calibri'
+}
+
+.background {
+    height: 100%;
+    width: 100%;
+}
+
+.list-row {
+    background-color: #0f0f0f;
+    min-height: 25px;
+    padding: 9px;
+}
+
+.list-row:hover {
+    background-color: dimgrey;
+}
+
+button {
+    background-color: #0f0f0f;
+    border: none;
+}
+
+input[type="text"], textarea {
+    background-color: #0f0f0f;
+    color: grey;
+}
+
+.star-ratings-sprite {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    font-size: 0;
+    height: 21px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 110px;
+    margin: 0 auto;
+}
+
+.star-ratings-sprite-rating {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 21px;
+    display: block;
+}
+.modal-dialog{
+    background-color: #0f0f0f;
+}
+
+.modal-content{
+    background-color: #9f6206;
+}
+
+
