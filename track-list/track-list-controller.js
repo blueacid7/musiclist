@@ -5,7 +5,7 @@ app.controller('trackListController', ['$scope', 'apiService', function($scope, 
   $scope.trackName = '';
   $scope.trackRating = '';
   $scope.editableTrack = {};
-  var baseUrl = 'http://104.197.128.152:8000/v1/tracks';
+  var baseUrl = 'https://104.197.128.152:8000/v1/tracks';
   apiService.getTrackListService(baseUrl).get().$promise.then(function(data) {
     $scope.trackList = data.results;
     $scope.next = data.next;
