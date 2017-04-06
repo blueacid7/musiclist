@@ -1,19 +1,19 @@
 'use strict';
-app.controller('trackListController', ['$scope', 'apiService', function($scope, apiService) {
-  //this.trackList = [];
+app.controller('trackListController', ['$scope','$resource', function($scope,$resource) {
   $scope.searchKey = '';
   $scope.trackName = '';
   $scope.trackRating = '';
   $scope.editableTrack = {};
+
   var baseUrl = 'http://104.197.128.152:8000/v1/tracks';
-  apiService.getTrackListService(baseUrl).get().$promise.then(function(data) {
+  $resource(baseUrl).get().$promise.then(function(data) {
     $scope.trackList = data.results;
     $scope.next = data.next;
     $scope.previous = data.previous;
   });
 
   $scope.getNextPage = function() {
-    apiService.getTrackListService($scope.next).get().$promise.then(function(data) {
+    $resource($scope.next).get().$promise.then(function(data) {
       $scope.trackList = data.results;
       $scope.next = data.next;
       $scope.previous = data.previous;
@@ -21,7 +21,7 @@ app.controller('trackListController', ['$scope', 'apiService', function($scope, 
   };
 
   $scope.getPrevPage = function() {
-    apiService.getTrackListService($scope.previous).get().$promise.then(function(data) {
+    $resource($scope.previous).get().$promise.then(function(data) {
       $scope.trackList = data.results;
       $scope.next = data.next;
       $scope.previous = data.previous;
@@ -36,7 +36,7 @@ app.controller('trackListController', ['$scope', 'apiService', function($scope, 
     else {
       searchUrl = baseUrl;
     }
-    apiService.getTrackListService(searchUrl).get().$promise.then(function(data) {
+    $resource(searchUrl).get().$promise.then(function(data) {
       $scope.trackList = data.results;
       $scope.next = data.next;
       $scope.previous = data.previous;
@@ -49,7 +49,7 @@ app.controller('trackListController', ['$scope', 'apiService', function($scope, 
       rating: $scope.trackRating,
       genres: [1]
     };
-    apiService.getTrackListService(baseUrl).save(param, function() {
+    $resource(baseUrl).save(param, function() {
       alert("Track successfully added ...");
     });
   };
@@ -57,7 +57,7 @@ app.controller('trackListController', ['$scope', 'apiService', function($scope, 
   $scope.finishEditing = function() {
     var editUrl = baseUrl + '/' + $scope.editableTrack.id;
     var param=$scope.editableTrack;
-    apiService.getTrackListService(editUrl).save(param, function() {
+    $resource(editUrl).save(param, function() {
       alert("Track successfully Edited ...");
     });
   };
