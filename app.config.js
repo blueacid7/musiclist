@@ -8,7 +8,9 @@ app.config(function($routeProvider) {
         controllerAs: 'vm'
       })
       .when("/genre", {
-        templateUrl : "red.html"
+        templateUrl : "genre-list/genre-list.html",
+      controller : 'genrelistController',
+      controllerAs: 'vm'
       })
       .otherwise({
         templateUrl : "track-list/track-list.html",

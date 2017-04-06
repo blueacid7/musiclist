@@ -1,0 +1,86 @@
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+  <div class="col-sm-12" style="text-align: center;
+  background-color: black;margin-top:10px;margin-bottom:10px;">
+    <h2 style="margin-top:10px">Track's Genres</h2>
+  </div>
+  <div ng-repeat="genre in genreList">
+    <div class="list-row col-sm-12">
+        <div class="col-sm-11"><b>{{ genre.name }}</b></div>
+          <div class="col-sm-1" style="text-align: center">
+        <div class="glyphicon glyphicon-edit" style="cursor: pointer;color:#9f6206" data-toggle="modal"
+             data-target="#EditModal" ng-click="initiateEditing(genre);"></div>
+      </div>
+     </div>
+      </div>
+</div>
+<div class="col-sm-3"></div>
+<div class="col-sm-12">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6" style="padding-left:8px;padding-right:8px;">
+<div class="col-sm-12" style="margin-top:10px;padding:0px;">
+      <div class="col-sm-2" style="padding:0px;text-align:left">
+        <button style="width:75px;height:40px" ng-click="getPrevPage()">Prev</button>
+      </div>
+      <div class="col-sm-8" style="padding:0px;text-align:center">
+        <button style="width:150px;height:40px" data-toggle="modal" data-target="#AddModal">Add Genre</button>
+      </div>
+      <div class="col-sm-2" style="padding:0px;text-align:right">
+        <button style="width:75px;height:40px" ng-click="getNextPage()">Next</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+
+
+<!-- modal for adding genre>
+
+<!-- Modal -->
+<div class="modal fade" id="AddModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:white">Add a genre</h4>
+      </div>
+      <div class="modal-body col-sm-12">
+        <div class="col-sm-12">
+          <input type="text" ng-model="genreName" placeholder="Enter Genre" class="form-control">
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" ng-click="addGenre()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <!-- modal for Editing track>
+
+<!-- Modal -->
+<div class="modal fade" id="EditModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color:white">Edit genre</h4>
+      </div>
+      <div class="modal-body col-sm-12">
+        <div class="col-sm-12">
+          <input type="text" ng-model="editableGenre.name" placeholder="Enter Genre" class="form-control">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button"  data-dismiss="modal" ng-click="finishEditing()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
