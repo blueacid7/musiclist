@@ -4,9 +4,10 @@
   background-color: black;margin-top:10px;margin-bottom:10px;">
     <h2 style="margin-top:10px">Music Track</h2>
   </div>
-  <div class="col-sm-12" style="margin-bottom:10px;padding:0px"><input type="text" placeholder="Search Track"
+  <div class="col-sm-10" style="margin-bottom:10px;padding:0px"><input type="text" placeholder="Search Track"
                                                                        ng-model="searchKey" ng-change="searchTrack()"
                                                                        class="form-control" id="usr"></div>
+  <div class="col-sm-2" style="text-align: right;padding-right:0px;"><button style="width:125px;height:34px;"><a ng-href="#/genre">Genres</a></button></div>
   <div ng-repeat="track in trackList">
     <div class="list-row col-sm-12">
       <div class="col-sm-8"><b>{{ track.title }}</b> [<span ng-repeat="genre in track.genres">{{genre.name}} | </span>]
